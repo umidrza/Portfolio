@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio list
+{% endblock title %}
+
+
+{% block main %}
+
+    <h2>{{portfolio.name}} | {{portfolio.surname}}</h2>
+    <h4>{{portfolio.address}}</h4>
+    <p>{{portfolio.number}}</p>
+    <p>{{portfolio.education}}</p>
+    <p>{{portfolio.experiences}}</p>
+    <p>{{portfolio.skills}}</p>
+    <p>{{portfolio.hobbies}}</p>
+    <p>{{portfolio.languages}}</p>
+    <p>{{portfolio.social_accounts}}</p>
+         
+{% endblock main %}

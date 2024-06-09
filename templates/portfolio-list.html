@@ -6,15 +6,20 @@
 
 
 {% block main %}
+
+<div class="container my-3">
     <h1>Portfolio list</h1>
 
     <a href="{% url 'portfolio:create' %}" class="btn btn-dark mb-3">Create</a>
 
     {% if portfolios %}
-        <div class="portfolios">
             {% for portfolio in portfolios %}
-                <a href="{% url 'portfolio:detail' portfolio.id %}"><h3>{{portfolio.name}} | {{portfolio.surname}}</h3></a>
+                <div class="row mb-1">
+                    <a href="{% url 'portfolio:detail' portfolio.id %}"><h3>{{portfolio.name}} | {{portfolio.surname}}</h3></a>
+                    <a href="{% url 'portfolio:pdf' portfolio.id %}" class="btn btn-dark ml-3">Download</a>
+                </div>
             {% endfor %}
-        </div>
     {% endif %}
+
+</div>
 {% endblock main %}

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import pdfkit
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'portfolio',
     'crispy_forms',
     'crispy_bootstrap5',
+    'wkhtmltopdf',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +134,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+PDFKIT_OPTIONS = {
+    'page-size': 'Letter',
+    'encoding': "UTF-8",
+    'no-outline': None
+}
+
+PDFKIT_CONFIG = pdfkit.configuration(wkhtmltopdf=r'C:/wkhtmltox/bin/wkhtmltopdf.exe')

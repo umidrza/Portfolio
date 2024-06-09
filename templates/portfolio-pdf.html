@@ -1,13 +1,11 @@
-{% extends "layout.html" %}
-
-{% block title %}
-    Portfolio list
-{% endblock title %}
-
-
-{% block main %}
-
-<div class="container my-3">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pdf</title>
+</head>
+<body>
     <h1>{{ portfolio.name }} {{ portfolio.surname }}</h1>
     <br>
     <p><strong>Address:</strong> {{ portfolio.address }}</p>
@@ -34,6 +32,6 @@
     <hr>
     <p>{{ portfolio.social_accounts }}</p>
     <br>
-</div>
-         
-{% endblock main %}
+</body>
+</html>
+

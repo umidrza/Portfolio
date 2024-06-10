@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock title %}
+
+
+{% block main %}
+
+<div class="container">
+    <h1>Home</h1>
+    <a href="{% url 'portfolio:list' %}" class="btn btn-outline-dark">Portfolio List</a>
+    <a href="{% url 'contact' %}" class="btn btn-outline-dark">Contact</a>
+</div>
+{% endblock main %}

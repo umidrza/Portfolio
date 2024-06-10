@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import pdfkit
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home',
     'portfolio',
     'crispy_forms',
     'crispy_bootstrap5',
@@ -52,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # New middleware
+    'django.middleware.locale.LocaleMiddleware', 
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -108,13 +112,24 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
+
+LANGUAGES = [
+    ("en", _("English")),
+    ("az", _("Azerbaijani")),
+]
+
+LANGUAGE_COOKIE_NAME = "django_language"
+
+LOCALE_PATHS = [BASE_DIR / "locale",]
 
 TIME_ZONE = 'Asia/Baku'
 
 USE_I18N = True
 
 USE_TZ = True
+
+USE_L10N = True
 
 
 # Static files (CSS, JavaScript, Images)
@@ -130,16 +145,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Crispy
-
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
+# Pdf kit
 PDFKIT_OPTIONS = {
     'page-size': 'Letter',
     'encoding': "UTF-8",
     'no-outline': None
 }
 
-PDFKIT_CONFIG = pdfkit.configuration(wkhtmltopdf=r'C:/wkhtmltox/bin/wkhtmltopdf.exe')
+PDFKIT_CONFIG = pdfkit.configuration(wkhtmltopdf=r'C:/My tools/wkhtmltox/bin/wkhtmltopdf.exe')
+
+# Email conf
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "umidrza4@gmail.com"
+EMAIL_HOST_PASSWORD = "your password"

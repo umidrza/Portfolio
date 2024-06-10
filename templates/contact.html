@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Contact
+{% endblock title %}
+
+
+{% block main %}
+
+<div class="container">
+    <div class="row my-3">
+        <div class="col-md-12">
+            <h1>Contact</h1>
+        </div>
+    </div>
+    <div class="row my-3">
+        <div class="col-md-12">
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            {% endif %}
+            <hr>
+        </div>
+    </div>
+    <div class="row my-3">
+        <div class="col-md-12">
+            <h4>{% trans "Please fill out your details" %}</h4>
+        </div>
+    </div>
+    <div class="row my-3">
+        <div class="col-md-7">
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock main %}
